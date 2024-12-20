@@ -1,0 +1,144 @@
+url: https://adibender.github.io/pammtools
+template:
+  params:
+    ganalytics: UA-44545040-3
+    docsearch:
+      api_key: c3726dcbf089f0b26f496305ed030c22
+      index_name: pammtools
+reference:
+  - title: "Transform data to Piece-wise Exponential Data (PED) format"
+    desc: "Functions to transform data sets in different formats to PED format,
+    suitable to be fit as PAMMs."
+    contents:
+      - as_ped
+  - title: "PED helper functions"
+    desc: "Functions that help extract (interval-specific) summary information
+    from PED and create newdata, e.g., for prediction and plotting."
+    contents:
+      - int_info
+      - ped_info
+      - make_newdata
+      - get_intervals
+      - add_counterfactual_transitions
+  - title: "Extract information from PAMMs"
+    desc: "Functions that help extract information from fitted model objects,
+    e.g., smooth effects for plotting"
+    contents:
+      - tidy_fixed
+      - tidy_smooth
+      - tidy_smooth2d
+      - tidy_re
+      - get_cumu_coef
+      - as.data.frame.crps
+      - predictSurvProb.pamm
+  - title: "Augment functions"
+    desc: "Functions that augment a data set by different quantaties like the
+    hazard rate."
+    contents:
+      - add_term
+      - add_hazard
+      - add_surv_prob
+      - add_cif
+      - add_trans_prob
+  - title: "Convenience functions for visualization of model outputs."
+    desc: "Functions that facilitate effect plots (smooth effects, etc.)"
+    contents:
+      - gg_fixed
+      - gg_smooth
+      - gg_tensor
+      - gg_re
+      - gg_slice
+      - gg_partial
+      - gg_partial_ll
+      - gg_laglead
+      - gg_cumu_eff
+      - geom_hazard
+      - geom_stepribbon
+      - get_plotinfo
+  - title: "Data sets"
+    desc: "Data sets contained in **`pammtools`**"
+    contents:
+      - tumor
+      - patient
+      - daily
+      - staph
+      - simdf_elra
+  - title: "Utilities"
+    desc: "Utility functions"
+    contents:
+      - seq_range
+      - sim_pexp
+      - get_laglead
+      - add_tdc
+      - pammtools
+      - get_terms
+articles:
+  - title: "Articles"
+    desc: "Several articles/vignettes that describe the usage of PAMMs"
+    contents:
+    - data-transformation
+    - baseline
+    - basics
+    - strata
+    - splines
+    - tveffects
+    - frailty
+    - tdcovar
+    - left-truncation
+    - model-evaluation
+    - cumulative-effects
+    - convenience
+    - competing-risks
+    - recurrent-events
+    - multi-state
+    - smj-tutorial
+
+navbar:
+  type: default
+  left:
+  - text: Reference
+    href: reference/index.html
+  - text: Articles
+    menu:
+    - text: Data transformation
+      href: articles/data-transformation.html
+    - text: Estimating the baseline hazard
+      href: articles/baseline.html
+    - text: Basic modeling
+      href: articles/basics.html
+    - text: Non-linear effects (penalized splines)
+      href: articles/splines.html
+    - text: Workflow and convenience functions
+      href: articles/convenience.html
+    - text: Stratified models
+      href: articles/strata.html
+    - text: Time-varying effects (TVEs)
+      href: articles/tveffects.html
+    - text: Frailties (random effects)
+      href: articles/frailty.html
+    - text: Time-dependent covariates (TDCs)
+      href: articles/tdcovar.html
+    - text: Left-truncated data
+      href: articles/left-truncation.html
+    - text: Model evaluation
+      href: articles/model-evaluation.html
+    - text: Cumulative effects/Exposure-Lag-Response Associations
+      href: articles/cumulative-effects.html
+    - text: Competing Risks
+      href: articles/competing-risks.html
+    - text: Recurrent Events
+      href: articles/recurrent-events.html
+    - text: Multi-State Modelling
+      href: articles/multi-state.html
+    - text: 'Paper: A generalized additive model approach to time-to-event analysis'
+      href: articles/smj-tutorial.html
+  - text: News
+    href: news/index.html
+  right:
+  - icon: fa-github fa-lg
+    href: https://github.com/adibender/pammtools
+
+development:
+  mode: auto
+  version_label: default
+  version_tooltip: "Version"

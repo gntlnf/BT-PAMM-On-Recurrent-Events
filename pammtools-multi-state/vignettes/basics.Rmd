@@ -1,0 +1,122 @@
+---
+title: "Basic Modeling"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{basics}
+  %\VignetteEngine{knitr::rmarkdown}
+bibliography: Remote.bib
+link-citations: yes
+---
+
+```{r, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  fig.align  = "center",
+  cache      = TRUE,
+  message    = FALSE,
+  fig.height = 5,
+  fig.width  = 5
+)
+```
+
+In this article we present basic examples for the estimation of PAMs using
+**`pammtools`** and compare the results to estimates obtained using
+the `coxph` function from the **`survival`** package.
+
+In the following two sections, we first describe the classical piece-wise
+exponential model (PEM) and after that the extension to piece-wise exponential
+additive models (PAM).
+
+## Piece-wise exponential model (PEM)
+The strength of the PEM is that analysis of time-to-event data can be performed
+using algorithms designed to fit Generalized Linear Models. This approach yields
+coefficient estimates that are equivalent to the estimates obtained from
+*Cox Proportional Hazards* models if
+
+(1) there are no ties (i.e., simultaneous events) in the data and
+
+(2) all unique event (and censoring) times are used as interval cut points in
+order to transform the data into the format suitable for PEMs
+(see `?as_ped` and the [vignette on data transformation](data-transformation.html)).
+
+Estimates can differ between the two approaches due to a more crude
+handling of ties in the PEM approach [@whitehead1980].
+In practice these differences are usually negligible (see examples below).
+
+
+### Subset with unique event times
+
+We first demonstrate the equivalence using a subset of the Veterans'
+data [@Kalbfleisch1980] provided in the `survival` package:
+
+```{r}
+library(survival)
+library(mgcv)
+library(pammtools)
+library(dplyr)
+
+veteran <- survival::veteran
+# remove ties to illustrate equivalence with Cox approach
+vetu <- filter(veteran, !duplicated(time))
+ped_vetu <- vetu %>%
+  as_ped(Surv(time, status)~., cut = unique(vetu$time), id = "id")
+pem_age <- glm(ped_status ~ interval - 1 + age, data = ped_vetu,
+	family = poisson(), offset = offset)
+## cox model for comparison
+cph_age <- coxph(Surv(time, status) ~ age, data = vetu)
+## compare coefficients
+cbind(
+  pem = coef(pem_age)["age"],
+  cox = coef(cph_age))
+```
+
+In this case both models yield equivalent estimates.
+
+### Full data set
+```{r}
+## Using the full data set (with ties) yields slightly different results
+# when comparing PEM to Cox-PH
+ped_vet <- veteran %>%
+  as_ped(Surv(time, status)~., cut = unique(veteran$time), id = "id")
+pem2_age <- glm(ped_status ~ interval - 1 + age, data = ped_vet,
+	family = poisson(), offset = offset)
+cph2_age <- coxph(Surv(time, status) ~ age, data = veteran)
+## compare coefficient estimate to Cox-PH estimate
+cbind(
+  pem = coef(pem2_age)["age"],
+  cox = coef(cph2_age))
+```
+
+## Piece-wise exponential additive model
+
+PAMs have two main advantages over PEMs [@Bender2018a]:
+
+- PAM estimation scales better when the number of intervals becomes large:
+	PEMs need to estimate one parameter per interval for the baseline hazard,
+	while the number of parameters in PAMs only depends on the number of basis
+	functions used for the spline estimate of the baseline hazard.
+
+- In PEMs, baseline hazard estimates for each interval can vary a lot between
+	neighboring intervals, especially when intervals only contain few events.
+	For PAMs on the other hand estimates of the baseline hazard in neighboring
+	intervals are similar due to penalization unless the data provides very strong
+	evidence for large changes between neighboring intervals.
+
+Note that coefficient estimates in PAMs are no longer equivalent to those from
+Cox PH models, since the estimation of the baseline hazard is performed
+semi-parametrically. In our experience the differences are negligible.
+
+Using the example above (data without ties) we get:
+
+```{r}
+## compare to PAM
+pam_age <- gam(ped_status ~ s(tend) + age, data = ped_vetu,
+	family = "poisson", offset = offset)
+cbind(
+	pam = coef(pam_age)["age"],
+	pem = coef(pem_age)["age"],
+	cox = coef(cph_age)["age"])
+```
+
+# References

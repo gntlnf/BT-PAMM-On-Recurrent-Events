@@ -1,0 +1,69 @@
+---
+title: "Frailty and random effects"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Frailty and random effects}
+  %\VignetteEngine{knitr::rmarkdown}
+bibliography: Remote.bib
+---
+
+```{r, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  fig.align = "center",
+  fig.width = 4,
+  fig.height = 4,
+  crop=TRUE)
+```
+
+```{r message=FALSE}
+library(dplyr)
+library(survival)
+library(coxme)
+library(pammtools)
+library(mgcv)
+library(ggplot2)
+theme_set(theme_bw())
+```
+
+Whenever subjects belonging to a cluster or group could have correlated outcomes,
+our models must account for such dependency structures. This can also be relevant in the recurrent events setting, where subjects can experience an event multiple times.
+
+To account for the correlation, we can include random effects in the model.
+In the context of survival analysis such effects are called "frailty" terms.
+
+## ICU patients
+
+For illustration we look at the survival of patients in the ICU. In this data set we have multiple observations from each ICU. The ICUs are identified by the `CombinedicuID` variable:
+
+```{r}
+data("patient")
+patient %>%
+  select(CombinedicuID, Survdays, PatientDied, ApacheIIScore) %>%
+  slice(1:10)
+```
+
+To fit a PAMM with random effects we includ an `s` term with `bs="re"`:
+
+```{r}
+ped <- patient %>%
+  slice(1:300) %>%
+  as_ped(Surv(Survdays, PatientDied)~ApacheIIScore + CombinedicuID)
+pamm_icu <- pamm(
+  ped_status ~ s(tend) + ApacheIIScore + s(CombinedicuID, bs = "re"),
+  data = ped)
+summary(pamm_icu)
+```
+
+The `pammtools` package also provides a convenience function for a
+quantile-quantile plot of the estimated frailties to check the
+Gaussian assumption:
+
+
+```{r}
+gg_re(pamm_icu)
+```
+
+
+Note that the `pamm` function calls `mgcv::gam` by default. Depending on the requirements for the random effect estimation, other mixed modeling software might be more appropriate/efficient, e.g. **`nlme`**, **`lme4`**, **`gamm4`** or for example using function `mgcv::gamm`.
