@@ -49,7 +49,7 @@ source("initial_run.R")
 
 #### To create the datasets for my analysis run (optional)
 
-This file uses parts of Erdmanns simulation study code. 
+This file uses parts of Erdmann's simulation study code. 
 This step is optional as all datasets are alreay saved in this Repo.
 ```
 source("Data_generation/generates_data.R")
@@ -82,7 +82,7 @@ source("Analysis/final_res_scripts/evaluate_all.R")
 Note: if you did run the the complete Analysis before, you first run 
 
 ```
-source("Analysis/create_boxplot_data.R")
+source("Analysis/final_res_scripts/create_boxplot_data.R")
 ```
 
 To then create all plots run 

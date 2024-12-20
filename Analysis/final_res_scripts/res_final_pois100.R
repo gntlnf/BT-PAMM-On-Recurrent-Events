@@ -10,25 +10,25 @@ res_normal1 <- normal1 %>% m_s_b_r(1)
 
 res_normal1_notrans <- normal1_notrans %>% m_s_b_r(1)
 
-res_cutoff1 <- cutoff1 %>% clean_results() %>% m_s_b_r(1) # diese negativen res fixen!!!!!!!!!!!
+res_cutoff1 <- cutoff1 %>% clean_results() %>% m_s_b_r(1)  
 
 res_normal2 <- normal2 %>% m_s_b_r(2)
 
 res_normal2_notrans <- normal2_notrans %>% m_s_b_r(2)
 
-res_cutoff2 <- cutoff2 %>% clean_results() %>% m_s_b_r(2) # diese negativen res fixen!!!!!!!!!!!
+res_cutoff2 <- cutoff2 %>% clean_results() %>% m_s_b_r(2)  
 
 res_normal3 <- normal3 %>% m_s_b_r(3)
 
 res_normal3_notrans <- normal3_notrans %>% m_s_b_r(3)
 
-res_cutoff3 <- cutoff3 %>% array(dim = c(4, 100)) %>% clean_results() %>% m_s_b_r(3) # diese negativen res fixen!!!!!!!!!!!
+res_cutoff3 <- cutoff3 %>% array(dim = c(4, 100)) %>% clean_results() %>% m_s_b_r(3)  
 
 res_normal4 <- normal4 %>% m_s_b_r(4)
 
 res_normal4_notrans <- normal4_notrans %>% m_s_b_r(4)
 
-res_cutoff4 <- cutoff4 %>% array(dim = c(4, 100)) %>% clean_results() %>% m_s_b_r(4) # diese negativen res fixen!!!!!!!!!!!
+res_cutoff4 <- cutoff4 %>% array(dim = c(4, 100)) %>% clean_results() %>% m_s_b_r(4)  
 
 
 plot_df <- rbind(data.frame(t(res_normal1),

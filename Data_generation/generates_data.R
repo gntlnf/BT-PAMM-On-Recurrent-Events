@@ -253,8 +253,8 @@ data_mark_1_1000 <- sim(repN=1000, true_mean=trueMeanMaster[[5]], scenario=scena
 
 
 
-
 # save all as rda in one go
+setwd("..")
 
 save(data_pois_1_100, data_pois_1_25, data_pois_1_50, data_pois_1_200,
      data_pois_2_100, data_pois_2_25, data_pois_2_50, data_pois_2_200,
@@ -272,5 +272,4 @@ save(data_pois_1_100, data_pois_1_25, data_pois_1_50, data_pois_1_200,
      file = "Data_generation/data_all.rda")
 
 
-set.wd("..")
 

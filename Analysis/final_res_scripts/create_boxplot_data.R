@@ -31,11 +31,11 @@
     data.frame("100" = normal1[seq(3, length(normal1), by = 4)],
                Estimator = "s(tend)+transition"),
     data.frame("100" = (cutoff1 %>% clean_results())[seq(3, length(cutoff1 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+transition"),
-    data.frame("100" = (wait1 %>% clean_results())[seq(3, length(wait1 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait"),
-    data.frame("100" = (trynonmark1 %>% clean_results())[seq(3, length(trynonmark1 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait(nonmark)")
+               Estimator = "s(tend, by=transition)+transition")#,
+    # data.frame("100" = (wait1 %>% clean_results())[seq(3, length(wait1 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait"),
+    # data.frame("100" = (trynonmark1 %>% clean_results())[seq(3, length(trynonmark1 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait(nonmark)")
   )
   
   mark_1_100_res <- cbind(mark_1_100_res, Scenario = "markov_1", Source = "New")
@@ -44,11 +44,11 @@
     data.frame("100" = normal3[seq(3, length(normal3), by = 4)],
                Estimator = "s(tend)+transition"),
     data.frame("100" = (cutoff3 %>% clean_results())[seq(3, length(cutoff3 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+transition"),
-    data.frame("100" = (wait3 %>% clean_results())[seq(3, length(wait3 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait"),
-    data.frame("100" = (trynonmark3 %>% clean_results())[seq(3, length(trynonmark3 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait(nonmark)")
+               Estimator = "s(tend, by=transition)+transition")#,
+    # data.frame("100" = (wait3 %>% clean_results())[seq(3, length(wait3 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait"),
+    # data.frame("100" = (trynonmark3 %>% clean_results())[seq(3, length(trynonmark3 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait(nonmark)")
   )
   
   mark_3_100_res <- cbind(mark_3_100_res, Scenario = "markov_3", Source = "New")
@@ -59,11 +59,11 @@
     data.frame("100" = normal1[seq(3, length(normal1), by = 4)],
                Estimator = "s(tend)+transition"),
     data.frame("100" = (cutoff1 %>% clean_results())[seq(3, length(cutoff1 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+transition"),
-    data.frame("100" = (wait1 %>% clean_results())[seq(3, length(wait1 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait"),
-    data.frame("100" = (trynonmark1 %>% clean_results())[seq(3, length(trynonmark1 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait(nonmark)")
+               Estimator = "s(tend, by=transition)+transition")#,
+    # data.frame("100" = (wait1 %>% clean_results())[seq(3, length(wait1 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait"),
+    # data.frame("100" = (trynonmark1 %>% clean_results())[seq(3, length(trynonmark1 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait(nonmark)")
   )
   
   non_mark_1_100_res <- cbind(non_mark_1_100_res, Scenario = "non_markov_1", Source = "New")
@@ -72,11 +72,11 @@
     data.frame("100" = normal3[seq(3, length(normal3), by = 4)],
                Estimator = "s(tend)+transition"),
     data.frame("100" = (cutoff3 %>% clean_results())[seq(3, length(cutoff3 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+transition"),
-    data.frame("100" = (wait3 %>% clean_results())[seq(3, length(wait3 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait"),
-    data.frame("100" = (trynonmark3 %>% clean_results())[seq(3, length(trynonmark3 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait(nonmark)")
+               Estimator = "s(tend, by=transition)+transition")#,
+    # data.frame("100" = (wait3 %>% clean_results())[seq(3, length(wait3 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait"),
+    # data.frame("100" = (trynonmark3 %>% clean_results())[seq(3, length(trynonmark3 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait(nonmark)")
   )
   
   non_mark_3_100_res <- cbind(non_mark_3_100_res, Scenario = "non_markov_3", Source = "New")
@@ -223,11 +223,11 @@ boxplot_all_data <- df
     data.frame("100" = normal2[seq(3, length(normal2), by = 4)],
                Estimator = "s(tend)+transition"),
     data.frame("100" = (cutoff2 %>% clean_results())[seq(3, length(cutoff2 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+transition"),
-    data.frame("100" = (wait2 %>% clean_results())[seq(3, length(wait2 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait"),
-    data.frame("100" = (trynonmark2 %>% clean_results())[seq(3, length(trynonmark2 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait(nonmark)")
+               Estimator = "s(tend, by=transition)+transition")#,
+    # data.frame("100" = (wait2 %>% clean_results())[seq(3, length(wait2 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait"),
+    # data.frame("100" = (trynonmark2 %>% clean_results())[seq(3, length(trynonmark2 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait(nonmark)")
   )
   
   mark_2_100_res <- cbind(mark_2_100_res, Scenario = "markov_2", Source = "New")
@@ -236,11 +236,11 @@ boxplot_all_data <- df
     data.frame("100" = normal4[seq(3, length(normal4), by = 4)],
                Estimator = "s(tend)+transition"),
     data.frame("100" = (cutoff4 %>% clean_results())[seq(3, length(cutoff4 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+transition"),
-    data.frame("100" = (wait4 %>% clean_results())[seq(3, length(wait4 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait"),
-    data.frame("100" = (trynonmark4 %>% clean_results())[seq(3, length(trynonmark4 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait(nonmark)")
+               Estimator = "s(tend, by=transition)+transition")#,
+    # data.frame("100" = (wait4 %>% clean_results())[seq(3, length(wait4 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait"),
+    # data.frame("100" = (trynonmark4 %>% clean_results())[seq(3, length(trynonmark4 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait(nonmark)")
   )
   
   mark_4_100_res <- cbind(mark_4_100_res, Scenario = "markov_4", Source = "New")
@@ -251,11 +251,11 @@ boxplot_all_data <- df
     data.frame("100" = normal2[seq(3, length(normal2), by = 4)],
                Estimator = "s(tend)+transition"),
     data.frame("100" = (cutoff2 %>% clean_results())[seq(3, length(cutoff2 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+transition"),
-    data.frame("100" = (wait2 %>% clean_results())[seq(3, length(wait2 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait"),
-    data.frame("100" = (trynonmark2 %>% clean_results())[seq(3, length(trynonmark2 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait(nonmark)")
+               Estimator = "s(tend, by=transition)+transition")#,
+    # data.frame("100" = (wait2 %>% clean_results())[seq(3, length(wait2 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait"),
+    # data.frame("100" = (trynonmark2 %>% clean_results())[seq(3, length(trynonmark2 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait(nonmark)")
   )
   
   
@@ -265,11 +265,11 @@ boxplot_all_data <- df
     data.frame("100" = (normal4 %>% clean_results())[seq(3, length(normal4 %>% clean_results()), by = 4)],
                Estimator = "s(tend)+transition"),
     data.frame("100" = (cutoff4 %>% clean_results())[seq(3, length(cutoff4 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+transition"),
-    data.frame("100" = (wait4 %>% clean_results())[seq(3, length(wait4 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait"),
-    data.frame("100" = (trynonmark4 %>% clean_results())[seq(3, length(trynonmark4 %>% clean_results()), by = 4)],
-               Estimator = "s(tend, by=transition)+wait(nonmark)")
+               Estimator = "s(tend, by=transition)+transition")#,
+    # data.frame("100" = (wait4 %>% clean_results())[seq(3, length(wait4 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait"),
+    # data.frame("100" = (trynonmark4 %>% clean_results())[seq(3, length(trynonmark4 %>% clean_results()), by = 4)],
+    #            Estimator = "s(tend, by=transition)+wait(nonmark)")
   )
   
   non_mark_4_100_res <- cbind(non_mark_4_100_res, Scenario = "non_markov_4", Source = "New")

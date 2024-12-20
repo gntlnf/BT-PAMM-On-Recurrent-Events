@@ -8,6 +8,9 @@ registerDoParallel(cl)
 clusterEvalQ(cl, {
   source("initial_run.R")
   source("skip_data_generation.R")
+  setwd("pammtools-multi-state")
+  devtools::load_all()
+  setwd("..")
 })
 
 run_parallel <- function(data, formula = NULL, competing = FALSE, cutoff = FALSE, wait = FALSE) {
@@ -20,7 +23,7 @@ run_parallel <- function(data, formula = NULL, competing = FALSE, cutoff = FALSE
 data <- data_pois_1_200[-c(47, 95)]
 normal1 <- run_parallel(data, "ped_status ~ s(tend) + transition")
 normal1_notrans <- run_parallel(data, "ped_status ~ s(tend)")
-spline1 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition")
+# spline1 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition")
 cutoff1 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE)
 # wait1 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE)
 
@@ -28,7 +31,7 @@ cutoff1 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transitio
 data <- data_pois_2_200[-c(71, 80, 98)]
 normal2 <- run_parallel(data, "ped_status ~ s(tend) + transition", competing = TRUE)
 normal2_notrans <- run_parallel(data, "ped_status ~ s(tend)", competing = TRUE)
-spline2 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", competing = TRUE)
+# spline2 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", competing = TRUE)
 cutoff2 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, competing = TRUE)
 # wait2 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE, competing = TRUE)
 
@@ -36,7 +39,7 @@ cutoff2 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transitio
 data <- data_pois_3_200[-c(17, 41, 92)]
 normal3 <- run_parallel(data, "ped_status ~ s(tend) + transition")
 normal3_notrans <- run_parallel(data, "ped_status ~ s(tend)")
-spline3 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition")
+# spline3 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition")
 cutoff3 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE)
 # wait3 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE)
 
@@ -44,15 +47,16 @@ cutoff3 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transitio
 data <- data_pois_4_200[-c(52, 70, 74)]
 normal4 <- run_parallel(data, "ped_status ~ s(tend) + transition", competing = TRUE)
 normal4_notrans <- run_parallel(data, "ped_status ~ s(tend)", competing = TRUE)
-spline4 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", competing = TRUE)
+# spline4 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", competing = TRUE)
 cutoff4 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, competing = TRUE)
 # wait4 <- run_parallel(data, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE, competing = TRUE)
 
+
 save(
-  normal1, spline1, cutoff1, normal1_notrans, #wait1,
-  normal2, spline2, cutoff2, normal2_notrans, #wait2,
-  normal3, spline3, cutoff3, normal3_notrans, #wait3,
-  normal4, spline4, cutoff4, normal4_notrans, #wait4,
+  normal1, cutoff1, normal1_notrans,
+  normal2, cutoff2, normal2_notrans,
+  normal3, cutoff3, normal3_notrans,
+  normal4, cutoff4, normal4_notrans,
   file = "Analysis/final_res_scripts/final_results/poisson200wait_final_results.RData"
 )
 print("Poisson 200 done")

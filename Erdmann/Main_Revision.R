@@ -176,7 +176,7 @@ CalculateMeans <- function(repN, true_mean, scenario, output_name, boxplot = FAL
 
 
 set.seed(321)
-true mean master
+# true mean master
 True1 <- trueMean(scenario=scenarioMaster[[1]], c(40,60,80,100), "True1")
 True2 <- trueMean(scenario=scenarioMaster[[5]], c(40,60,80,100), "True2")
 True5 <- trueMean(scenario=scenarioMaster[[17]], c(40,60,80,100), "True5")
@@ -197,60 +197,60 @@ setwd("aus_sim_repo")
 #function calls
 #Scenario 1 Poisson, random censoring, no terminating eve
 set.seed(1234)
-Scenario1_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[1]], scenario=scenarioMaster[[1]], output_name="Scenario1_N100", boxplot=TRUE, term_event=FALSE, stop = TRUE)
-Scenario1_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[1]], scenario=scenarioMaster[[2]], output_name="Scenario1_N25", boxplot=FALSE, term_event=FALSE, stop = TRUE)
-Scenario1_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[1]], scenario=scenarioMaster[[3]], output_name="Scenario1_N50", boxplot=FALSE, term_event=FALSE, stop = TRUE)
+Scenario1_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[1]], scenario=scenarioMaster[[1]], output_name="Scenario1_N100", boxplot=TRUE, term_event=FALSE)
+Scenario1_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[1]], scenario=scenarioMaster[[2]], output_name="Scenario1_N25", boxplot=FALSE, term_event=FALSE)
+Scenario1_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[1]], scenario=scenarioMaster[[3]], output_name="Scenario1_N50", boxplot=FALSE, term_event=FALSE)
 Scenario1_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[1]], scenario=scenarioMaster[[4]], output_name="Scenario1_N200", boxplot=TRUE, term_event=FALSE)
 
 #Scenario 2 Poisson, random censoring, terminating event
 set.seed(1235)
-Scenario2_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[2]], scenario=scenarioMaster[[5]], output_name="Scenario2_N100", boxplot=TRUE, term_event=TRUE, stop = TRUE)
-Scenario2_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[2]], scenario=scenarioMaster[[6]], output_name="Scenario2_N25", boxplot=FALSE, term_event=TRUE, stop = TRUE)
-Scenario2_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[2]], scenario=scenarioMaster[[7]], output_name="Scenario2_N50", boxplot=FALSE, term_event=TRUE, stop = TRUE)
+Scenario2_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[2]], scenario=scenarioMaster[[5]], output_name="Scenario2_N100", boxplot=TRUE, term_event=TRUE)
+Scenario2_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[2]], scenario=scenarioMaster[[6]], output_name="Scenario2_N25", boxplot=FALSE, term_event=TRUE)
+Scenario2_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[2]], scenario=scenarioMaster[[7]], output_name="Scenario2_N50", boxplot=FALSE, term_event=TRUE)
 Scenario2_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[2]], scenario=scenarioMaster[[8]], output_name="Scenario2_N200", boxplot=TRUE, term_event=TRUE)
 
 #Scenario 3 Poisson, state censoring, no terminating eve
 set.seed(1236)
-Scenario3_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[3]], scenario=scenarioMaster[[9]], output_name="Scenario3_N100", boxplot=TRUE, term_event=FALSE, stop = TRUE)
-Scenario3_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[3]], scenario=scenarioMaster[[10]], output_name="Scenario3_N25", boxplot=FALSE, term_event=FALSE, stop = TRUE)
-Scenario3_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[3]], scenario=scenarioMaster[[11]], output_name="Scenario3_N50", boxplot=FALSE, term_event=FALSE, stop = TRUE)
+Scenario3_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[3]], scenario=scenarioMaster[[9]], output_name="Scenario3_N100", boxplot=TRUE, term_event=FALSE)
+Scenario3_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[3]], scenario=scenarioMaster[[10]], output_name="Scenario3_N25", boxplot=FALSE, term_event=FALSE)
+Scenario3_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[3]], scenario=scenarioMaster[[11]], output_name="Scenario3_N50", boxplot=FALSE, term_event=FALSE)
 Scenario3_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[3]], scenario=scenarioMaster[[12]], output_name="Scenario3_N200", boxplot=TRUE, term_event=FALSE)
 
 #Scenario 4 Poisson, state censoring, terminating event
 set.seed(1237)
-Scenario4_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[4]], scenario=scenarioMaster[[13]], output_name="Scenario4_N100", boxplot=TRUE, term_event=TRUE, stop = TRUE)
-Scenario4_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[4]], scenario=scenarioMaster[[14]], output_name="Scenario4_N25", boxplot=FALSE, term_event=TRUE, stop = TRUE)
-Scenario4_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[4]], scenario=scenarioMaster[[15]], output_name="Scenario4_N50", boxplot=FALSE, term_event=TRUE, stop = TRUE)
+Scenario4_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[4]], scenario=scenarioMaster[[13]], output_name="Scenario4_N100", boxplot=TRUE, term_event=TRUE)
+Scenario4_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[4]], scenario=scenarioMaster[[14]], output_name="Scenario4_N25", boxplot=FALSE, term_event=TRUE)
+Scenario4_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[4]], scenario=scenarioMaster[[15]], output_name="Scenario4_N50", boxplot=FALSE, term_event=TRUE)
 Scenario4_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[4]], scenario=scenarioMaster[[16]], output_name="Scenario4_N200", boxplot=TRUE, term_event=TRUE)
 
 #Scenario 5 Markov, random censoring, no terminating event
 set.seed(1238)
-Scenario5_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[5]], scenario=scenarioMaster[[17]], output_name="Scenario5_N100", boxplot=TRUE, term_event=FALSE, stop = TRUE)
-Scenario5_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[5]], scenario=scenarioMaster[[18]], output_name="Scenario5_N25", boxplot=FALSE, term_event=FALSE, stop = TRUE)
-Scenario5_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[5]], scenario=scenarioMaster[[19]], output_name="Scenario5_N50", boxplot=FALSE, term_event=FALSE, stop = TRUE)
+Scenario5_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[5]], scenario=scenarioMaster[[17]], output_name="Scenario5_N100", boxplot=TRUE, term_event=FALSE)
+Scenario5_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[5]], scenario=scenarioMaster[[18]], output_name="Scenario5_N25", boxplot=FALSE, term_event=FALSE)
+Scenario5_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[5]], scenario=scenarioMaster[[19]], output_name="Scenario5_N50", boxplot=FALSE, term_event=FALSE)
 Scenario5_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[5]], scenario=scenarioMaster[[20]], output_name="Scenario5_N200", boxplot=TRUE, term_event=FALSE)
 
 #Scenario 6 Markov, random censoring, terminating event
 set.seed(1239)
-Scenario6_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[6]], scenario=scenarioMaster[[21]], output_name="Scenario6_N100", boxplot=TRUE, term_event=TRUE, stop = TRUE)
-Scenario6_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[6]], scenario=scenarioMaster[[22]], output_name="Scenario6_N25", boxplot=FALSE, term_event=TRUE, stop = TRUE)
-Scenario6_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[6]], scenario=scenarioMaster[[23]], output_name="Scenario6_N50", boxplot=FALSE, term_event=TRUE, stop = TRUE)
+Scenario6_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[6]], scenario=scenarioMaster[[21]], output_name="Scenario6_N100", boxplot=TRUE, term_event=TRUE)
+Scenario6_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[6]], scenario=scenarioMaster[[22]], output_name="Scenario6_N25", boxplot=FALSE, term_event=TRUE)
+Scenario6_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[6]], scenario=scenarioMaster[[23]], output_name="Scenario6_N50", boxplot=FALSE, term_event=TRUE)
 Scenario6_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[6]], scenario=scenarioMaster[[24]], output_name="Scenario6_N200", boxplot=TRUE, term_event=TRUE)
 
 
 
 #Scenario 7 Markov, stat censoring, no terminating event
 set.seed(1240)
-Scenario7_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[7]], scenario=scenarioMaster[[25]], output_name="Scenario7_N100", boxplot=TRUE, term_event=FALSE, stop = TRUE)
-Scenario7_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[7]], scenario=scenarioMaster[[26]], output_name="Scenario7_N25", boxplot=FALSE, term_event=FALSE, stop = TRUE)
-Scenario7_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[7]], scenario=scenarioMaster[[27]], output_name="Scenario7_N50", boxplot=FALSE, term_event=FALSE, stop = TRUE)
+Scenario7_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[7]], scenario=scenarioMaster[[25]], output_name="Scenario7_N100", boxplot=TRUE, term_event=FALSE)
+Scenario7_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[7]], scenario=scenarioMaster[[26]], output_name="Scenario7_N25", boxplot=FALSE, term_event=FALSE)
+Scenario7_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[7]], scenario=scenarioMaster[[27]], output_name="Scenario7_N50", boxplot=FALSE, term_event=FALSE)
 Scenario7_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[7]], scenario=scenarioMaster[[28]], output_name="Scenario7_N200", boxplot=TRUE, term_event=FALSE)
 
 #Scenario 8 Markov, stat censoring, terminating event
 set.seed(1241)
-Scenario8_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[8]], scenario=scenarioMaster[[29]], output_name="Scenario8_N100", boxplot=TRUE, term_event=TRUE, stop = TRUE)
-Scenario8_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[8]], scenario=scenarioMaster[[30]], output_name="Scenario8_N25", boxplot=FALSE, term_event=TRUE, stop = TRUE)
-Scenario8_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[8]], scenario=scenarioMaster[[31]], output_name="Scenario8_N50", boxplot=FALSE, term_event=TRUE, stop = TRUE)
+Scenario8_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[8]], scenario=scenarioMaster[[29]], output_name="Scenario8_N100", boxplot=TRUE, term_event=TRUE)
+Scenario8_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[8]], scenario=scenarioMaster[[30]], output_name="Scenario8_N25", boxplot=FALSE, term_event=TRUE)
+Scenario8_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[8]], scenario=scenarioMaster[[31]], output_name="Scenario8_N50", boxplot=FALSE, term_event=TRUE)
 Scenario8_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[8]], scenario=scenarioMaster[[32]], output_name="Scenario8_N200", boxplot=TRUE, term_event=TRUE)
 
 
@@ -258,31 +258,31 @@ Scenario8_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[8]], scenario=s
 
 #Scenario 9 non Markov, random censoring, no terminating event
 set.seed(1243)
-Scenario9_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[9]], scenario=scenarioMaster[[33]], output_name="Scenario9_N100", boxplot=TRUE, term_event=FALSE, stop = TRUE)
-Scenario9_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[9]], scenario=scenarioMaster[[34]], output_name="Scenario9_N25", boxplot=FALSE, term_event=FALSE, stop = TRUE)
-Scenario9_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[9]], scenario=scenarioMaster[[35]], output_name="Scenario9_N50", boxplot=FALSE, term_event=FALSE, stop = TRUE)
+Scenario9_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[9]], scenario=scenarioMaster[[33]], output_name="Scenario9_N100", boxplot=TRUE, term_event=FALSE)
+Scenario9_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[9]], scenario=scenarioMaster[[34]], output_name="Scenario9_N25", boxplot=FALSE, term_event=FALSE)
+Scenario9_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[9]], scenario=scenarioMaster[[35]], output_name="Scenario9_N50", boxplot=FALSE, term_event=FALSE)
 Scenario9_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[9]], scenario=scenarioMaster[[36]], output_name="Scenario9_N200", boxplot=TRUE, term_event=FALSE)
 
 #Scenario 10 non Markov, random censoring, terminating event
 set.seed(1244)
-Scenario10_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[10]], scenario=scenarioMaster[[37]], output_name="Scenario10_N100", boxplot=TRUE, term_event=TRUE, stop = TRUE)
-Scenario10_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[10]], scenario=scenarioMaster[[38]], output_name="Scenario10_N25", boxplot=FALSE, term_event=TRUE, stop = TRUE)
-Scenario10_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[10]], scenario=scenarioMaster[[39]], output_name="Scenario10_N50", boxplot=FALSE, term_event=TRUE, stop = TRUE)
+Scenario10_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[10]], scenario=scenarioMaster[[37]], output_name="Scenario10_N100", boxplot=TRUE, term_event=TRUE)
+Scenario10_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[10]], scenario=scenarioMaster[[38]], output_name="Scenario10_N25", boxplot=FALSE, term_event=TRUE)
+Scenario10_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[10]], scenario=scenarioMaster[[39]], output_name="Scenario10_N50", boxplot=FALSE, term_event=TRUE)
 Scenario10_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[10]], scenario=scenarioMaster[[40]], output_name="Scenario10_N200", boxplot=TRUE, term_event=TRUE)
 
 
 
 #Scenario 11 non Markov, stat censoring, no terminating event
 set.seed(1245)
-Scenario11_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[11]], scenario=scenarioMaster[[41]], output_name="Scenario11_N100", boxplot=TRUE, term_event=FALSE, stop = TRUE)
-Scenario11_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[11]], scenario=scenarioMaster[[42]], output_name="Scenario11_N25", boxplot=FALSE, term_event=FALSE, stop = TRUE)
-Scenario11_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[11]], scenario=scenarioMaster[[43]], output_name="Scenario11_N50", boxplot=FALSE, term_event=FALSE, stop = TRUE)
+Scenario11_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[11]], scenario=scenarioMaster[[41]], output_name="Scenario11_N100", boxplot=TRUE, term_event=FALSE)
+Scenario11_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[11]], scenario=scenarioMaster[[42]], output_name="Scenario11_N25", boxplot=FALSE, term_event=FALSE)
+Scenario11_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[11]], scenario=scenarioMaster[[43]], output_name="Scenario11_N50", boxplot=FALSE, term_event=FALSE)
 Scenario11_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[11]], scenario=scenarioMaster[[44]], output_name="Scenario11_N200", boxplot=TRUE, term_event=FALSE)
 
 #Scenario 12 non Markov, stat censoring, terminating event
 set.seed(1246)
-Scenario12_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[12]], scenario=scenarioMaster[[45]], output_name="Scenario12_N100", boxplot=TRUE, term_event=TRUE, stop = TRUE)
-Scenario12_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[12]], scenario=scenarioMaster[[46]], output_name="Scenario12_N25", boxplot=FALSE, term_event=TRUE, stop = TRUE)
-Scenario12_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[12]], scenario=scenarioMaster[[47]], output_name="Scenario12_N50", boxplot=FALSE, term_event=TRUE, stop = TRUE)
+Scenario12_N1<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[12]], scenario=scenarioMaster[[45]], output_name="Scenario12_N100", boxplot=TRUE, term_event=TRUE)
+Scenario12_N2<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[12]], scenario=scenarioMaster[[46]], output_name="Scenario12_N25", boxplot=FALSE, term_event=TRUE)
+Scenario12_N3<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[12]], scenario=scenarioMaster[[47]], output_name="Scenario12_N50", boxplot=FALSE, term_event=TRUE)
 Scenario12_N4<-CalculateMeans(repN=100, true_mean=trueMeanMaster[[12]], scenario=scenarioMaster[[48]], output_name="Scenario12_N200", boxplot=TRUE, term_event=TRUE)
 
