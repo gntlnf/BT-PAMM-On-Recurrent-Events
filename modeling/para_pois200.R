@@ -49,7 +49,7 @@ save(
   normal2, cutoff2, normal2_notrans,
   normal3, cutoff3, normal3_notrans,
   normal4, cutoff4, normal4_notrans,
-  file = "Analysis/final_res_scripts/final_results/poisson200wait_final_results.RData"
+  file = "Analysis/final_res_scripts/final_results/results/poisson200_final_results.RData"
 )
 print("Poisson 200 done")
 

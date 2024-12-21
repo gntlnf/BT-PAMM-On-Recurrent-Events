@@ -89,4 +89,4 @@ The PED example and result tables are created
 ```
 source("Analysis/final_res_scripts/create_ped_tables.R")
 ```
-
+The tables will be saved in `Analysis/final_res_scripts/final_results/tables` and the plots in `Analysis/final_res_scripts/final_results/plots`.

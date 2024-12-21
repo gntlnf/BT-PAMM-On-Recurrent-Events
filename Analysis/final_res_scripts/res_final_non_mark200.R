@@ -1,7 +1,7 @@
 
 
 # load results of this thesis settings: Non-Markov N=200
-load("Analysis/final_res_scripts/final_results/non_mark200_final_results.RData")
+load("Analysis/final_res_scripts/final_results/results/non_mark200_final_results.RData")
 
 # evaluate results of this thesis 
 res_normal1 <- normal1 %>% m_s_b_r(9)
@@ -243,8 +243,8 @@ plot_non_markov200 <- plot_non_markov200 %>%
   rename(Estimator=method, Source=from) %>% 
   filter(Estimator != "tensor_spline")
 
-save(plot_non_markov200, file = "Analysis/final_res_scripts/final_results/plot_non_markov200.rda")
+save(plot_non_markov200, file = "Analysis/final_res_scripts/final_results/evaluated/plot_non_markov200.rda")
 
-load("Analysis/final_res_scripts/final_results/plot_non_markov200.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/plot_non_markov200.rda")
 
 

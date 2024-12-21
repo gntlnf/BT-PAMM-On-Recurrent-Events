@@ -1,6 +1,6 @@
 
 # load results of this thesis settings: Poisson N=100
-load("Analysis/final_res_scripts/final_results/poisson100_final_results.RData")
+load("Analysis/final_res_scripts/final_results/results/poisson100_final_results.RData")
 
 # evaluate results of this thesis 
 res_normal1 <- normal1 %>% m_s_b_r(1)
@@ -259,8 +259,8 @@ pois_100_plot <- pois_100_plot %>%
                       "non-parametric")) %>% 
   rename(Estimator=method, Source=from)
 
-save(pois_100_plot, file = "Analysis/final_res_scripts/final_results/pois_100_plot.rda")
+save(pois_100_plot, file = "Analysis/final_res_scripts/final_results/evaluated/pois_100_plot.rda")
 
-load("Analysis/final_res_scripts/final_results/pois_100_plot.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/pois_100_plot.rda")
 
     

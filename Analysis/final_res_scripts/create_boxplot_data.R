@@ -1,7 +1,7 @@
 ## create boxplot data N=100
 
 # ohne terminating event
-{load("Analysis/final_res_scripts/final_results/poisson100_final_results.RData")
+{load("Analysis/final_res_scripts/final_results/results/poisson100_final_results.RData")
   
   pois_1_100_res <- rbind(
     data.frame("100" = normal1[seq(3, length(normal1), by = 4)],
@@ -25,7 +25,7 @@
   
   pois_3_100_res <- cbind(pois_3_100_res, Scenario = "pois_3", Source = "New")
   
-  load("Analysis/final_res_scripts/final_results/mark100_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/mark100_final_results.RData")
   
   mark_1_100_res <- rbind(
     data.frame("100" = normal1[seq(3, length(normal1), by = 4)],
@@ -45,7 +45,7 @@
   
   mark_3_100_res <- cbind(mark_3_100_res, Scenario = "markov_3", Source = "New")
   
-  load("Analysis/final_res_scripts/final_results/non_mark100_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/non_mark100_final_results.RData")
   
   non_mark_1_100_res <- rbind(
     data.frame("100" = normal1[seq(3, length(normal1), by = 4)],
@@ -165,13 +165,13 @@
   df$Estimator[df$Estimator=="NAE"]<-"NA"
   save(df, file = "Analysis/final_res_scripts/final_results/boxplot_100_final.rda")}
 
-load("Analysis/final_res_scripts/final_results/boxplot_100_final.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/boxplot_100_final.rda")
 
 boxplot_all_data <- df
 
 
 # mit terminating event
-{load("Analysis/final_res_scripts/final_results/poisson100_final_results.RData")
+{load("Analysis/final_res_scripts/final_results/results/poisson100_final_results.RData")
   
   pois_2_100_res <- rbind(
     data.frame("100" = normal2[seq(3, length(normal2), by = 4)],
@@ -195,7 +195,7 @@ boxplot_all_data <- df
   
   pois_4_100_res <- cbind(pois_4_100_res, Scenario = "pois_4", Source = "New")
   
-  load("Analysis/final_res_scripts/final_results/mark100_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/mark100_final_results.RData")
   
   mark_2_100_res <- rbind(
     data.frame("100" = normal2[seq(3, length(normal2), by = 4)],
@@ -215,7 +215,7 @@ boxplot_all_data <- df
   
   mark_4_100_res <- cbind(mark_4_100_res, Scenario = "markov_4", Source = "New")
   
-  load("Analysis/final_res_scripts/final_results/non_mark100_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/non_mark100_final_results.RData")
   
   non_mark_2_100_res <- rbind(
     data.frame("100" = normal2[seq(3, length(normal2), by = 4)],
@@ -334,20 +334,20 @@ boxplot_all_data <- df
                                                 "markov_2", "markov_4",
                                                 "non_markov_2", "non_markov_4"))
   df$Estimator[df$Estimator=="NAE"]<-"NA"
-  save(df, file = "Analysis/final_res_scripts/final_results/boxplot_term_100_final.rda")}
+  save(df, file = "Analysis/final_res_scripts/final_results/evaluated/boxplot_term_100_final.rda")}
 
-load("Analysis/final_res_scripts/final_results/boxplot_term_100_final.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/boxplot_term_100_final.rda")
 
 # save both in one
 boxplot_all_data <- rbind(boxplot_all_data, df)
-save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/boxplot_all_data_100_final.rda")
+save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/evaluated/boxplot_all_data_100_final.rda")
 
 
 # create boxplot N=200
 
 # no terminating event
 {
-  load("Analysis/final_res_scripts/final_results/poisson200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/poisson200_final_results.RData")
   
   pois_1_200_res <- rbind(
     data.frame("40" = normal1[seq(1, length(normal1), by = 4)],
@@ -391,7 +391,7 @@ save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/boxplot_
   
   pois_3_200_res <- cbind(pois_3_200_res, Scenario = "pois_3", Source = "New")
   
-  load("Analysis/final_res_scripts/final_results/mark200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/mark200_final_results.RData")
   
   mark_1_200_res <- rbind(
     data.frame("40" = normal1[seq(1, length(normal1), by = 4)],
@@ -425,7 +425,7 @@ save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/boxplot_
   
   mark_3_200_res <- cbind(mark_3_200_res, Scenario = "markov_3", Source = "New")
   
-  load("Analysis/final_res_scripts/final_results/non_mark200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/non_mark200_final_results.RData")
   
   non_mark_1_200_res <- rbind(
     data.frame("40" = normal1[seq(1, length(normal1), by = 4)],
@@ -469,13 +469,13 @@ save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/boxplot_
                                                 "markov_1", "markov_3",
                                                 "non_markov_1", "non_markov_3"))
   
-  save(df, file = "Analysis/final_res_scripts/final_results/boxplot_200_all_t.rda")}
+  save(df, file = "Analysis/final_res_scripts/final_results/evaluated/boxplot_200_all_t.rda")}
 
 
 
 # with terminating event
 {
-  load("Analysis/final_res_scripts/final_results/poisson200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/poisson200_final_results.RData")
   
   pois_2_200_res <- rbind(
     data.frame("40" = normal2[seq(1, length(normal2), by = 4)],
@@ -519,7 +519,7 @@ save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/boxplot_
   
   pois_4_200_res <- cbind(pois_4_200_res, Scenario = "pois_4", Source = "New")
   
-  load("Analysis/final_res_scripts/final_results/mark200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/mark200_final_results.RData")
   
   mark_2_200_res <- rbind(
     data.frame("40" = normal2[seq(1, length(normal2), by = 4)],
@@ -553,7 +553,7 @@ save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/boxplot_
   
   mark_4_200_res <- cbind(mark_4_200_res, Scenario = "markov_4", Source = "New")
   
-  load("Analysis/final_res_scripts/final_results/non_mark200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/non_mark200_final_results.RData")
   
   non_mark_2_200_res <- rbind(
     data.frame("40" = normal1[seq(1, length(normal1), by = 4)],
@@ -597,7 +597,7 @@ save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/boxplot_
                                                 "markov_2", "markov_4",
                                                 "non_markov_2", "non_markov_4"))
   
-  save(df, file = "Analysis/final_res_scripts/final_results/boxplot_200_all_term_t.rda")}
+  save(df, file = "Analysis/final_res_scripts/final_results/evaluated/boxplot_200_all_term_t.rda")}
 
 
 
@@ -606,7 +606,7 @@ save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/boxplot_
 
 # no terminating event
 {
-  load("Analysis/final_res_scripts/final_results/poisson200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/poisson200_final_results.RData")
 
   pois_1_200_res <- rbind(
     data.frame("100" = normal1[seq(3, length(normal1), by = 4)],
@@ -630,7 +630,7 @@ save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/boxplot_
 
   pois_3_200_res <- cbind(pois_3_200_res, Scenario = "pois_3", Source = "New")
 
-  load("Analysis/final_res_scripts/final_results/mark200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/mark200_final_results.RData")
 
   mark_1_200_res <- rbind(
     data.frame("100" = normal1[seq(3, length(normal1), by = 4)],
@@ -650,7 +650,7 @@ save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/boxplot_
 
   mark_3_200_res <- cbind(mark_3_200_res, Scenario = "markov_3", Source = "New")
 
-  load("Analysis/final_res_scripts/final_results/non_mark200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/non_mark200_final_results.RData")
 
   non_mark_1_200_res <- rbind(
     data.frame("100" = normal1[seq(3, length(normal1), by = 4)],
@@ -769,14 +769,14 @@ save(boxplot_all_data, file = "Analysis/final_res_scripts/final_results/boxplot_
                                                 "markov_1", "markov_3",
                                                 "non_markov_1", "non_markov_3"))
   df$Estimator[df$Estimator=="NAE"]<-"NA"
-  save(df, file = "Analysis/final_res_scripts/final_results/boxplot_200_final.rda")
+  save(df, file = "Analysis/final_res_scripts/final_results/evaluated/boxplot_200_final.rda")
   }
 
 df_200_boxplot_all <- df
 
 # with terminating event
 {
-  load("Analysis/final_res_scripts/final_results/poisson200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/poisson200_final_results.RData")
 
   pois_2_200_res <- rbind(
     data.frame("100" = normal2[seq(3, length(normal2), by = 4)],
@@ -800,7 +800,7 @@ df_200_boxplot_all <- df
 
   pois_4_200_res <- cbind(pois_4_200_res, Scenario = "pois_4", Source = "New")
 
-  load("Analysis/final_res_scripts/final_results/mark200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/mark200_final_results.RData")
 
   mark_2_200_res <- rbind(
     data.frame("100" = normal2[seq(3, length(normal2), by = 4)],
@@ -820,7 +820,7 @@ df_200_boxplot_all <- df
 
   mark_4_200_res <- cbind(mark_4_200_res, Scenario = "markov_4", Source = "New")
 
-  load("Analysis/final_res_scripts/final_results/non_mark200_final_results.RData")
+  load("Analysis/final_res_scripts/final_results/results/non_mark200_final_results.RData")
 
   non_mark_2_200_res <- rbind(
     data.frame("100" = normal2[seq(3, length(normal2), by = 4)],
@@ -940,14 +940,13 @@ df_200_boxplot_all <- df
                                                 "markov_2", "markov_4",
                                                 "non_markov_2", "non_markov_4"))
   df$Estimator[df$Estimator=="NAE"]<-"NA"
-  save(df, file = "Analysis/final_res_scripts/final_results/boxplot_term_200_final.rda")
+  save(df, file = "Analysis/final_res_scripts/final_results/evaluated/boxplot_term_200_final.rda")
   }
 
 df_200_boxplot_all <- rbind(df_200_boxplot_all, df) 
 
-term <- rbind(df_200_boxplot_all, term)
 
-save(df_200_boxplot_all, file = "Analysis/final_res_scripts/final_results/boxplot_all_200_final.rda")
+save(df_200_boxplot_all, file = "Analysis/final_res_scripts/final_results/evaluated/boxplot_all_200_final.rda")
 
 
 

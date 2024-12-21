@@ -1,3 +1,5 @@
+source("skip_data_generation.R")
+
 # load pammtools to create ped tables
 setwd("pammtools-multi-state")
 devtools::load_all()
@@ -16,11 +18,8 @@ data <- data %>%
   filter(id %in% c(3, 5, 10))
 
 data$id <- c(1,2,2,3,3,3)
+no_term <- data
 
-print(xtable(data, caption = "Your Table Caption Here"), 
-      include.rownames = FALSE, 
-      tabular.environment = "tabular", 
-      booktabs = TRUE)
 
 
 for_ped <- data %>%
@@ -38,10 +37,7 @@ ped <- as_ped(data = for_ped,
 
 ped$offset <- round(ped$offset, 3)
 
-print(xtable(ped, caption = "Your Table Caption Here"), 
-      include.rownames = FALSE, 
-      tabular.environment = "tabular", 
-      booktabs = TRUE)
+
 
 
 data <- data_pois_2_100[[1]]
@@ -53,11 +49,8 @@ data$id <- rep(1:2, each = 4)
 
 data$entry <- round(data$entry, 3)
 data$exit <- round(data$exit, 3)
+term <- data
 
-print(xtable(data, caption = "Your Table Caption Here"), 
-      include.rownames = FALSE, 
-      tabular.environment = "tabular", 
-      booktabs = TRUE)
 
 
 data <- data %>%
@@ -92,7 +85,7 @@ for_ped <- add_counterfactual_transitions(data %>%
   )
 
 
-ped <- as_ped(data = for_ped,
+ped_term <- as_ped(data = for_ped,
               formula = Surv(entry, exit, status) ~ .,
               id = "id",
               transition = "transition",
@@ -100,30 +93,44 @@ ped <- as_ped(data = for_ped,
               , cut = c(unique(for_ped$exit), c(40, 60, 80, 100))
 )
 
-ped$offset <- round(ped$offset, 3)
+ped_term$offset <- round(ped_term$offset, 3)
 
 
-print(xtable(ped, caption = "Your Table Caption Here"), 
+sink("Analysis/final_res_scripts/final_results/tables/ped_examples.tex")
+print(xtable(no_term, caption = "Example dataset before PED format transformation"), 
       include.rownames = FALSE, 
       tabular.environment = "tabular", 
       booktabs = TRUE)
+print(xtable(ped, caption = "Example dataset in PED format"), 
+      include.rownames = FALSE, 
+      tabular.environment = "tabular", 
+      booktabs = TRUE)
+print(xtable(term, caption = "Data with Terminating Event before PED Transformation"), 
+      include.rownames = FALSE, 
+      tabular.environment = "tabular", 
+      booktabs = TRUE)
+print(xtable(ped_term, caption = "PED with Terminating Event"), 
+      include.rownames = FALSE, 
+      tabular.environment = "tabular", 
+      booktabs = TRUE)
+sink()
 
 # create result tables here
 
-load("Analysis/final_res_scripts/final_results/pois_100_plot.rda")
 
 
 
 
-  color_erd <- c("NA"="#FF6666", "EB1"="#FF0000", "EB2"="#990000", "AJ"="#660000")
+
+color_erd <- c("NA"="#FF6666", "EB1"="#FF0000", "EB2"="#990000", "AJ"="#660000")
 # color_mine <- c("Smooth Effect on Time"="#66B2FF", "Smooth Effect on Time + Intercept Change on Transition"="#3399FF", "Smooth Effect on Time dependent on Transition"="#0066FF", "s(tend, by=transition)+wait"="#003399", "s(tend, by=transition)+wait(nonmark)"="#001F5B")
 color_mine <- c("Smooth Effect on Time"="#66B2FF", "Smooth Effect on Time + Intercept Change on Transition"="#0066FF", "Smooth Effect on Time dependent on Transition"="#003399") #, "s(tend, by=transition)+wait"="#003399", "s(tend, by=transition)+wait(nonmark)"="#001F5B")
 colors <- c(color_erd, color_mine)
 cols <- scale_color_manual(values = colors)
 cols_fill <- scale_fill_manual(values = colors)
-load("Analysis/final_res_scripts/final_results/pois_100_plot.rda")
-load("Analysis/final_res_scripts/final_results/plot_markov100.rda")
-load("Analysis/final_res_scripts/final_results/plot_non_markov100.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/pois_100_plot.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/plot_markov100.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/plot_non_markov100.rda")
 
 pois_100_plot <- pois_100_plot %>% 
   mutate(scenario = paste0("pois_", scenario)) %>% 
@@ -209,7 +216,7 @@ library(xtable)
 
 
 
-pois <- for_table %>% 
+pois100 <- for_table %>% 
   filter(names == "Poisson Setting") %>% 
   select(Estimator, scenario, bias_40, bias_60, bias_80, bias_100, rmse_40, rmse_60, rmse_80, rmse_100) %>% 
   mutate(Estimator = ifelse(Estimator == "Smooth Effect on Time",
@@ -222,17 +229,11 @@ pois <- for_table %>%
 
 
 
-for(i in unique(pois$scenario)) {
-print(xtable(pois %>% filter(scenario==i) %>% select(-scenario), caption = cat("Poisson Setting: ", i), 
-      include.rownames = FALSE, 
-      tabular.environment = "tabular", 
-      booktabs = TRUE))
-}
 
 
 # mark 
 
-mark <- for_table %>% 
+mark100 <- for_table %>% 
   filter(names == "Markov Setting") %>% 
   select(Estimator, scenario, bias_40, bias_60, bias_80, bias_100, rmse_40, rmse_60, rmse_80, rmse_100) %>% 
   mutate(Estimator = ifelse(Estimator == "Smooth Effect on Time",
@@ -245,16 +246,11 @@ mark <- for_table %>%
 
 
 
-for(i in unique(mark$scenario)) {
-  print(xtable(mark %>% filter(scenario==i) %>% select(-scenario), caption = cat("Markov Setting: ", i), 
-               include.rownames = FALSE, 
-               tabular.environment = "tabular", 
-               booktabs = TRUE))
-}
+
 
 # non mark 
 
-nonmark <- for_table %>% 
+nonmark100 <- for_table %>% 
   filter(names == "Non-Markov Setting") %>% 
   select(Estimator, scenario, bias_40, bias_60, bias_80, bias_100, rmse_40, rmse_60, rmse_80, rmse_100) %>% 
   mutate(Estimator = ifelse(Estimator == "Smooth Effect on Time",
@@ -267,12 +263,7 @@ nonmark <- for_table %>%
 
 
 
-for(i in unique(nonmark$scenario)) {
-  print(xtable(nonmark %>% filter(scenario==i) %>% select(-scenario), caption = cat("Non-Markov Setting: ", i), 
-               include.rownames = FALSE, 
-               tabular.environment = "tabular", 
-               booktabs = TRUE))
-}
+
 
 
 
@@ -281,9 +272,9 @@ for(i in unique(nonmark$scenario)) {
 
 # N=200
 
-load("Analysis/final_res_scripts/final_results/poisson200_plot_df.rda")
-load("Analysis/final_res_scripts/final_results/plot_markov200.rda")
-load("Analysis/final_res_scripts/final_results/plot_non_markov200.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/poisson200_plot_df.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/plot_markov200.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/plot_non_markov200.rda")
 
 pois_200_plot <- pois_200_plot %>% 
   mutate(scenario = paste0("pois_", scenario)) %>% 
@@ -383,12 +374,12 @@ pois <- for_table %>%
 
 
 
-for(i in unique(pois$scenario)) {
-  print(xtable(pois %>% filter(scenario==i) %>% select(-scenario), caption = cat("Poisson Setting: ", i), 
-               include.rownames = FALSE, 
-               tabular.environment = "tabular", 
-               booktabs = TRUE))
-}
+
+
+
+
+
+
 
 
 # mark 
@@ -406,12 +397,12 @@ mark <- for_table %>%
 
 
 
-for(i in unique(mark$scenario)) {
-  print(xtable(mark %>% filter(scenario==i) %>% select(-scenario), caption = cat("Markov Setting: ", i), 
-               include.rownames = FALSE, 
-               tabular.environment = "tabular", 
-               booktabs = TRUE))
-}
+
+
+
+
+
+
 
 # non mark 
 
@@ -428,11 +419,48 @@ nonmark <- for_table %>%
 
 
 
-for(i in unique(nonmark$scenario)) {
-  print(xtable(nonmark %>% filter(scenario==i) %>% select(-scenario), caption = cat("Non-Markov Setting: ", i), 
+
+
+
+
+
+
+
+sink("Analysis/final_res_scripts/final_results/tables/all_results_tables.tex")
+for(i in unique(pois100$scenario)) {
+  print(xtable(pois %>% filter(scenario==i) %>% select(-scenario), caption = i, 
                include.rownames = FALSE, 
                tabular.environment = "tabular", 
                booktabs = TRUE))
 }
-
-
+for(i in unique(mark100$scenario)) {
+  print(xtable(mark %>% filter(scenario==i) %>% select(-scenario), caption = i, 
+               include.rownames = FALSE, 
+               tabular.environment = "tabular", 
+               booktabs = TRUE))
+}
+for(i in unique(nonmark100$scenario)) {
+  print(xtable(nonmark %>% filter(scenario==i) %>% select(-scenario), caption = i, 
+               include.rownames = FALSE, 
+               tabular.environment = "tabular", 
+               booktabs = TRUE))
+}
+for(i in unique(pois$scenario)) {
+  print(xtable(pois %>% filter(scenario==i) %>% select(-scenario), caption = i, 
+               include.rownames = FALSE, 
+               tabular.environment = "tabular", 
+               booktabs = TRUE))
+}
+for(i in unique(mark$scenario)) {
+  print(xtable(mark %>% filter(scenario==i) %>% select(-scenario), caption = i, 
+               include.rownames = FALSE, 
+               tabular.environment = "tabular", 
+               booktabs = TRUE))
+}
+for(i in unique(nonmark$scenario)) {
+  print(xtable(nonmark %>% filter(scenario==i) %>% select(-scenario), caption = i, 
+               include.rownames = FALSE, 
+               tabular.environment = "tabular", 
+               booktabs = TRUE))
+}
+sink()

@@ -1,6 +1,6 @@
 
 # load results of this thesis settings: Markov N=200 
-load("Analysis/final_res_scripts/final_results/mark200_final_results.RData")
+load("Analysis/final_res_scripts/final_results/results/mark200_final_results.RData")
 
 
 # evaluate results of this thesis 
@@ -249,6 +249,6 @@ plot_markov200 <- plot_markov200 %>%
                      "non-parametric")) %>% 
   rename(Estimator=method, Source=from)
 
-save(plot_markov200, file = "Analysis/final_res_scripts/final_results/plot_markov200.rda")
+save(plot_markov200, file = "Analysis/final_res_scripts/final_results/evaluated/plot_markov200.rda")
 
-load("Analysis/final_res_scripts/final_results/plot_markov200.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/plot_markov200.rda")

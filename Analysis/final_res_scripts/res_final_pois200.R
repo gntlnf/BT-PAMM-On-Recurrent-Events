@@ -1,6 +1,6 @@
 
 # load results of this thesis settings: Poisson N=200
-load("Analysis/final_res_scripts/final_results/poisson200_final_results.RData")
+load("Analysis/final_res_scripts/final_results/results/poisson200_final_results.RData")
 
 # evaluate results of this thesis 
 
@@ -256,8 +256,8 @@ pois_200_plot <- pois_200_plot %>%
 
 
 pois_200_plot <- plot_df
-save(pois_200_plot, file = "Analysis/final_res_scripts/final_results/poisson200_plot_df.rda")
-load("Analysis/final_res_scripts/final_results/poisson200_plot_df.rda")
+save(pois_200_plot, file = "Analysis/final_res_scripts/final_results/evaluated/poisson200_plot_df.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/poisson200_plot_df.rda")
 
 
 

@@ -1,6 +1,6 @@
 
 # load results of this thesis settings: Non-Markov N=100
-load("Analysis/final_res_scripts/final_results/non_mark100_final_results.RData")
+load("Analysis/final_res_scripts/final_results/results/non_mark100_final_results.RData")
 
 # evaluate results of this thesis 
 res_normal1 <- normal1 %>% m_s_b_r(9)
@@ -244,8 +244,8 @@ plot_non_markov100 <- plot_non_markov100 %>%
                      "non-parametric")) %>% 
   rename(Estimator=method, Source=from)
 
-save(plot_non_markov100, file = "Analysis/final_res_scripts/final_results/plot_non_markov100.rda")
+save(plot_non_markov100, file = "Analysis/final_res_scripts/final_results/evaluated/plot_non_markov100.rda")
 
-load("Analysis/final_res_scripts/final_results/plot_non_markov100.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/plot_non_markov100.rda")
 
 

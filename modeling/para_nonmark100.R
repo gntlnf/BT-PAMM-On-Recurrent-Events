@@ -43,7 +43,7 @@ save(normal1, cutoff
      normal2, cutoff2,
      normal3, cutoff3,
      normal4, cutoff4,
-     file = "Analysis/final_res_scripts/final_results/non_mark_final_results.RData")
+     file = "Analysis/final_res_scripts/final_results/results/non_mark100_final_results.RData")
 print("Non-Markov 100 done")
 
 stopCluster(cl)

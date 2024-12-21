@@ -44,7 +44,7 @@ save(
   normal2, cutoff2, 
   normal3, cutoff3, 
   normal4, cutoff4,
-  file = "Analysis/final_res_scripts/final_results/mark200_final_results.RData"
+  file = "Analysis/final_res_scripts/final_results/results/mark200_final_results.RData"
 )
 print("Markov 200 done")
 

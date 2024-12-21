@@ -48,7 +48,7 @@ save(normal1, cutoff1, normal1_notrans,
      normal2, cutoff2, normal2_notrans,
      normal3, cutoff3, normal3_notrans,
      normal4, cutoff4, normal4_notrans,
-     file = "Analysis/final_res_scripts/final_results/poisson_final_results.RData")
+     file = "Analysis/final_res_scripts/final_results/results/poisson100_final_results.RData")
 print("Poisson 100 done")
 
 stopCluster(cl)

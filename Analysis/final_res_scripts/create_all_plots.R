@@ -25,7 +25,7 @@ cols_fill <- scale_fill_manual(values = colors)
 
 # poisson N=100 Bias and RMSE
 
-load("Analysis/final_res_scripts/final_results/pois_100_plot.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/pois_100_plot.rda")
 
 pois_100_plot <- pois_100_plot %>% 
   mutate(Estimator = factor(Estimator, levels = c(names(color_erd), c("s(tend)", "s(tend)+transition", "s(tend, by=transition)+transition")), labels = c(names(color_erd), names(color_mine))))
@@ -97,7 +97,7 @@ ggsave("Analysis/final_res_scripts/final_results/plots/pois100_plot_bias.png", p
 
 # markov N=100 Bias and RMSE
 
-load("Analysis/final_res_scripts/final_results/plot_markov100.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/plot_markov100.rda")
 plot_markov100 <- plot_markov100 %>% 
   filter(!(Estimator %in% c("s(tend, by=transition)+wait(nonmark)",
                             "s(tend, by=transition)+wait"))) %>% 
@@ -176,7 +176,7 @@ ggsave("Analysis/final_res_scripts/final_results/plots/mark100_plot_rmse.png", m
 
 # non markov N=100 Bias and RMSE
 
-load("Analysis/final_res_scripts/final_results/plot_non_markov100.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/plot_non_markov100.rda")
 
 plot_non_markov100 <- plot_non_markov100 %>% 
   filter(!(Estimator %in% c("te(tend, wait)+transition",
@@ -257,7 +257,7 @@ ggsave("Analysis/final_res_scripts/final_results/plots/nonmark100_plot_rmse.png"
 
 # boxplots for all scenarios N=100
 
-load("Analysis/final_res_scripts/final_results/boxplot_all_data_100_final.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/boxplot_all_data_100_final.rda")
 
 boxplot_all_data$Scenario <- factor(boxplot_all_data$Scenario, levels = c("pois_1", "pois_2", "pois_3", "pois_4",
                                                                           "markov_1", "markov_2", "markov_3", "markov_4",
@@ -483,9 +483,9 @@ ggsave("Analysis/final_res_scripts/final_results/plots/boxplot_non_mark100.png",
 
 # N=200 no term all scenarios
 
-load("Analysis/final_res_scripts/final_results/poisson200_plot_df.rda")
-load("Analysis/final_res_scripts/final_results/plot_markov200.rda")
-load("Analysis/final_res_scripts/final_results/plot_non_markov200.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/poisson200_plot_df.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/plot_markov200.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/plot_non_markov200.rda")
 
 pois_200_plot <- pois_200_plot %>% 
   mutate(scenario = paste0("pois_", scenario)) %>% 
@@ -631,11 +631,11 @@ ggsave("Analysis/final_res_scripts/final_results/plots/bias_200_term_plot.png", 
 
 # boxplot N=200 PAMM estimators over time
 
-load("Analysis/final_res_scripts/final_results/boxplot_200_all_t.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/boxplot_200_all_t.rda")
 
 df_200_boxplot_all_t <- df
 
-load("Analysis/final_res_scripts/final_results/boxplot_200_all_term_t.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/boxplot_200_all_term_t.rda")
 
 df_200_boxplot_all_t <- rbind(df_200_boxplot_all_t, df)
 
@@ -916,8 +916,8 @@ ggsave("Analysis/final_res_scripts/final_results/plots/nonmark200_plot_rmse.png"
 
 # boxplot vgl N=100 vs N=200
 
-load("Analysis/final_res_scripts/final_results/boxplot_all_data_100_final.rda")
-load("Analysis/final_res_scripts/final_results/boxplot_all_200_final.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/boxplot_all_data_100_final.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/boxplot_all_200_final.rda")
 
 vgl_boxplot_N <- rbind(boxplot_all_data %>% # filter(Source=="New") %>%
                          filter(!(Estimator %in% c("s(tend, by=transition)+wait", "s(tend, by=transition)+wait(nonmark)"))) %>% 
