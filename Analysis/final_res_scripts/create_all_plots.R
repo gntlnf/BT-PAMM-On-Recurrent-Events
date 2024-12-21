@@ -1,9 +1,22 @@
+# load true mean values
+load("Erdmann/saves/True1.rda")
+True1 <- true_mean
+load("Erdmann/saves/True2.rda")
+True2 <- true_mean
+load("Erdmann/saves/True5.rda")
+True5 <- true_mean
+load("Erdmann/saves/True6.rda")
+True6 <- true_mean
+load("Erdmann/saves/True9.rda")
+True9 <- true_mean
+load("Erdmann/saves/True10.rda")
+True10 <- true_mean
+trueMeanMaster <- list(True1, True2, True1, True2, True5, True6, True5, True6, True9, True10, True9, True10)
 
 
 # define used colors per estimator
 
 color_erd <- c("NA"="#FF6666", "EB1"="#FF0000", "EB2"="#990000", "AJ"="#660000")
-# color_mine <- c("Smooth Effect on Time"="#66B2FF", "Smooth Effect on Time + Intercept Change on Transition"="#3399FF", "Smooth Effect on Time dependent on Transition"="#0066FF", "s(tend, by=transition)+wait"="#003399", "s(tend, by=transition)+wait(nonmark)"="#001F5B")
 color_mine <- c("Smooth Effect on Time"="#66B2FF", "Smooth Effect on Time + Intercept Change on Transition"="#0066FF", "Smooth Effect on Time dependent on Transition"="#003399") #, "s(tend, by=transition)+wait"="#003399", "s(tend, by=transition)+wait(nonmark)"="#001F5B")
 colors <- c(color_erd, color_mine)
 cols <- scale_color_manual(values = colors)

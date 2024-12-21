@@ -1,11 +1,8 @@
 
-# #########################################################################################################
+# load results of this thesis settings: Poisson N=100
 load("Analysis/final_res_scripts/final_results/poisson100_final_results.RData")
-# setwd("..")
-load("Erdmann/results/ResultData_Scenario1_N100.rda")
 
-
-
+# evaluate results of this thesis 
 res_normal1 <- normal1 %>% m_s_b_r(1)
 
 res_normal1_notrans <- normal1_notrans %>% m_s_b_r(1)
@@ -22,14 +19,17 @@ res_normal3 <- normal3 %>% m_s_b_r(3)
 
 res_normal3_notrans <- normal3_notrans %>% m_s_b_r(3)
 
-res_cutoff3 <- cutoff3 %>% array(dim = c(4, 100)) %>% clean_results() %>% m_s_b_r(3)  
+res_cutoff3 <- cutoff3  %>% clean_results() %>% m_s_b_r(3)  
 
 res_normal4 <- normal4 %>% m_s_b_r(4)
 
 res_normal4_notrans <- normal4_notrans %>% m_s_b_r(4)
 
-res_cutoff4 <- cutoff4 %>% array(dim = c(4, 100)) %>% clean_results() %>% m_s_b_r(4)  
+res_cutoff4 <- cutoff4 %>% clean_results() %>% m_s_b_r(4)  
 
+
+# evaluate results of replication of Erdmann's paper results
+load("Erdmann/results/ResultData_Scenario1_N100.rda")
 
 plot_df <- rbind(data.frame(t(res_normal1),
                             t = c(40, 60, 80, 100), scenario = "rand_noterm",

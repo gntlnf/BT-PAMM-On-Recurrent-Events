@@ -1,10 +1,8 @@
 
-# ##########################################################################################
+# load results of this thesis settings: Poisson N=200
 load("Analysis/final_res_scripts/final_results/poisson200_final_results.RData")
-setwd("..")
-load("Erdmann/results/ResultData_Scenario1_N200.rda")
 
-
+# evaluate results of this thesis 
 
 res_normal1 <- normal1 %>% m_s_b_r(1)
 
@@ -30,6 +28,8 @@ res_normal4_notrans <- normal4_notrans %>% m_s_b_r(4)
 
 res_cutoff4 <- cutoff4 %>% clean_results() %>% m_s_b_r(4)  
 
+# evaluate results of replication of Erdmann's paper results
+load("Erdmann/results/ResultData_Scenario1_N200.rda")
 
 plot_df <- rbind(data.frame(t(res_normal1),
                             t = c(40, 60, 80, 100), scenario = "rand_noterm",
@@ -81,7 +81,6 @@ plot_df <- rbind(data.frame(t(res_normal1),
                             "method"  = "EB2",
                             "from" = "old"))
 
-# setwd("..")
 load("Erdmann/results/ResultData_Scenario2_N200.rda")
 
 plot_df <- rbind(plot_df,
@@ -135,7 +134,6 @@ plot_df <- rbind(plot_df,
                             "method"  = "EB2",
                             "from" = "old"))
 
-# setwd("..")
 load("Erdmann/results/ResultData_Scenario3_N200.rda")
 
 plot_df <- rbind(plot_df,
@@ -189,7 +187,6 @@ plot_df <- rbind(plot_df,
                             "method"  = "EB2",
                             "from" = "old"))
 
-# setwd("..")
 load("Erdmann/results/ResultData_Scenario4_N200.rda")
 
 plot_df <- rbind(plot_df,

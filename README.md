@@ -60,7 +60,7 @@ source("Data_generation/generates_data.R")
 #### Load Datasets (optional if you run the previous step)
 This file loads all datasets  
 ```
-source("skip_data_generation.R")
+load("Data_generation/data_all.rda")
 ```
 
 #### To reproduce all the PAMM modeling (optional as all results are saved in this Repo)
@@ -79,18 +79,13 @@ source("Analysis/final_res_scripts/evaluate_all.R")
 
 #### Reproduce graphs and tables (this is possible even when skipping all above)
 
-Note: if you did run the the complete Analysis before, you first run 
-
-```
-source("Analysis/final_res_scripts/create_boxplot_data.R")
-```
 
 To then create all plots run 
 ```
 source("Analysis/final_res_scripts/create_all_plots.R")
 ```
 
-The PED example tables are created 
+The PED example and result tables are created 
 ```
 source("Analysis/final_res_scripts/create_ped_tables.R")
 ```

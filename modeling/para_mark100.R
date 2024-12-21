@@ -22,38 +22,22 @@ run_parallel <- function(data, formula = NULL, competing = FALSE, cutoff = FALSE
 # Scenario 1: rand_noterm
 data_mark_1_100 <- data_mark_1_100
 normal1 <- run_parallel(data_mark_1_100, "ped_status ~ s(tend) + transition")
-# normal1_notrans <- run_parallel(data_mark_1_100, "ped_status ~ s(tend)")
-# spline1 <- run_parallel(data_mark_1_100, "ped_status ~ s(tend, by = transition) + transition")
 cutoff1 <- run_parallel(data_mark_1_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE)
-# wait1 <- run_parallel(data_mark_1_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE)
-# trynonmark1 <- run_parallel(data_mark_1_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE, non_markov = TRUE)
 
 # Scenario 2: rand_term
 data_mark_2_100 <- data_mark_2_100[-c(21)]
 normal2 <- run_parallel(data_mark_2_100, "ped_status ~ s(tend) + transition", competing = TRUE)
-# normal2_notrans <- run_parallel(data_mark_2_100, "ped_status ~ s(tend)", competing = TRUE)
-# spline2 <- run_parallel(data_mark_2_100, "ped_status ~ s(tend, by = transition) + transition", competing = TRUE)
 cutoff2 <- run_parallel(data_mark_2_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, competing = TRUE)
-# wait2 <- run_parallel(data_mark_2_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE, competing = TRUE)
-# trynonmark2 <- run_parallel(data_mark_2_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE, non_markov = TRUE, competing = TRUE)
 
 # Scenario 3: state_noterm
 data_mark_3_100 <- data_mark_3_100
 normal3 <- run_parallel(data_mark_3_100, "ped_status ~ s(tend) + transition")
-# normal3_notrans <- run_parallel(data_mark_3_100, "ped_status ~ s(tend)")
-# spline3 <- run_parallel(data_mark_3_100, "ped_status ~ s(tend, by = transition) + transition")
 cutoff3 <- run_parallel(data_mark_3_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE)
-# wait3 <- run_parallel(data_mark_3_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE)
-# trynonmark3 <- run_parallel(data_mark_3_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE, non_markov = TRUE)
 
 # Scenario 4: state_term
 data_mark_4_100 <- data_mark_4_100[-c(6, 10, 65, 94)]
 normal4 <- run_parallel(data_mark_4_100, "ped_status ~ s(tend) + transition", competing = TRUE)
-# normal4_notrans <- run_parallel(data_mark_4_100, "ped_status ~ s(tend)", competing = TRUE)
-# spline4 <- run_parallel(data_mark_4_100, "ped_status ~ s(tend, by = transition) + transition", competing = TRUE)
 cutoff4 <- run_parallel(data_mark_4_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, competing = TRUE)
-# wait4 <- run_parallel(data_mark_4_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE, competing = TRUE)
-# trynonmark4 <- run_parallel(data_mark_4_100, "ped_status ~ s(tend, by = transition) + transition", cutoff = TRUE, wait = TRUE, non_markov = TRUE, competing = TRUE)
 
 save(normal1, cutoff1,   
      normal2, cutoff2,  

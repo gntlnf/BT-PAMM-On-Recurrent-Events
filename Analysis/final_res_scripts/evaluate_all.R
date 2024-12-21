@@ -1,4 +1,5 @@
 
+# load function to calculate relative Bias and RMSE
 # this function is based of Erdmanns code, just extended slightly
 bias_rmse <- function(mean_all, true_mean)
 {
@@ -21,7 +22,9 @@ bias_rmse <- function(mean_all, true_mean)
   return(c(estimate, bias, rmse, sd_bias))
 }
 
+# load (estimated) true mean values
 # these files are generated using Erdmanns code
+# for this thesis a seed was set to generate them
 load("Erdmann/saves/True1.rda")
 True1 <- true_mean
 load("Erdmann/saves/True2.rda")
@@ -36,10 +39,13 @@ load("Erdmann/saves/True10.rda")
 True10 <- true_mean
 trueMeanMaster <- list(True1, True2, True1, True2, True5, True6, True5, True6, True9, True10, True9, True10)
 
-
+# source files that evaluate the results for each scenario
 source("Analysis/final_res_scripts/res_final_pois100.R")
 source("Analysis/final_res_scripts/res_final_pois100.R")
 source("Analysis/final_res_scripts/res_final_mark100.R")
 source("Analysis/final_res_scripts/res_final_mark200.R")
 source("Analysis/final_res_scripts/res_final_non_mark100.R")
 source("Analysis/final_res_scripts/res_final_non_mark200.R")
+
+# create dataframes from results for boxplot
+source("Analysis/final_res_scripts/create_boxplot_data.R")
