@@ -163,9 +163,9 @@
                                                 "markov_1", "markov_3",
                                                 "non_markov_1", "non_markov_3"))
   df$Estimator[df$Estimator=="NAE"]<-"NA"
-  save(df, file = "Analysis/final_res_scripts/final_results/boxplot_100_final.rda")}
+  save(df, file = "Analysis/final_res_scripts/final_results/evaluated/boxplot_100_final.rda")}
 
-load("Analysis/final_res_scripts/final_results/evaluated/boxplot_100_final.rda")
+load("Analysis/final_res_scripts/final_results/evaluated/evaluated/boxplot_100_final.rda")
 
 boxplot_all_data <- df
 
