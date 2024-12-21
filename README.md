@@ -3,8 +3,8 @@
 This Repository contains the code used for the thesis *"Comparison of different estimators for the expected number of events in recurrent events with competing terminal event"*.
 It contains the data generation in form of a simulation study, estimation and visualization of the results.
 Some code was not created for this thesis. 
-The code for the simulation study (provided by "Erdmann and Beyersmann") is in the folder `simulation_study`. 
-Not yet published code of the R package `pammtools` for multistate settings is in the folder `pammtools-multi-state`.  
+The code for the simulation study (provided by Erdmann and Beyersmann) is in the folder `simulation_study`. 
+Code that is not live yet of the R package `pammtools` for multistate settings is in the folder `pammtools-multi-state`.   
 
 
 ## Structure
@@ -22,26 +22,30 @@ Reproducing this entire thesis will take some time and includes parallelized cod
 ### Replication of Alexandra Erdmann's results 
 
 This file was entirely created for the paper *"Comparison of nonparametric estimators of the expected number of recurrent events"*, I only adjusted absolut paths and added
-a seed when calculating the true mean values to ensure reproducibility. Running this file takes quite some time. 
+a seed when estimating the true mean values to ensure reproducibility. Running this file takes quite some time. 
 ```
 source("Erdmann/Main_Revision")
 ``` 
-
+The estimations of the true mean value of recurrent events will be saved in `Erdmann/saves`.
+All estimation results will be saved in `Erdmann/results` it includes:
+  - all results in `tex` files
+  - all results as `rda`
+  - the results for the data sized $N \in \\{100, 200\\}$
 
 ### To reproduce this paper's results:
 
 First all dependencies will be loaded. 
 This includes the packages:
 
-  - "survival"
-  - "etm"
-  - "mvna"
-  - "data.table"
-  - "dplyr"
-  - "MASS"
-  - "xtable"
-  - "doParallel"
-  - "foreach"
+  - `survival`
+  - `etm`
+  - `mvna`
+  - `data.table`
+  - `dplyr`
+  - `MASS`
+  - `xtable`
+  - `doParallel`
+  - `foreach`
 
 ```
 source("initial_run.R")
@@ -54,8 +58,8 @@ This step is optional as all datasets are alreay saved in this Repo.
 ```
 source("Data_generation/generates_data.R")
 ```
-
-   
+All datasets will be saved as `Data_generation/data_all.rda`.
+    
 
 #### Load Datasets (optional if you run the previous step)
 This file loads all datasets  
@@ -65,11 +69,14 @@ load("Data_generation/data_all.rda")
 
 #### To reproduce all the PAMM modeling (optional as all results are saved in this Repo)
 
+#### To reproduce all the PAMM modeling (optional as all results are saved in this Repo)
+
 These files are parallelized and optimized for Windows. 
-The computational time is pretty long for each file.
+The computational time is pretty long.
 ```
 source("modeling/para_models.R")
 ```
+The results for each Scenario is saved in `Analysis/final_res_scripts_final_results`
 
 To then evaluate the results run
 ```
