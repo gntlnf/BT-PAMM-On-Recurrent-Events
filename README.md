@@ -9,11 +9,11 @@ Code that is not live yet of the R package `pammtools` for multistate settings i
 
 ## Structure
 
-  - *Erdmann*: contains the code provided by Alexandra Erdmann for the simulation study and nonparametric estimation.
-  - *Data_generation*: contains the code for the data generation which utilizes code from the above.
-  - *initial_run.R* and *skip_data_generation.R*: are the files to load all necessary packages and data if the data generation is skipped.
-  - *modeling*: contains the code for PAMM modeling.
-  - *Analysis*: contains the code for the analysis of the results and the creation of the visualization in graphs and tables.
+  - folder `Erdmann`: contains the code provided by Alexandra Erdmann for the simulation study and nonparametric estimation.
+  - folder `Data_generation`: contains the code for the data generation which utilizes code from the above.
+  - `initial_run.R` and `skip_data_generation.R`: are the files to load all necessary packages and data if the data generation is skipped.
+  - folder `modeling`: contains the code for PAMM modeling.
+  - folder `Analysis`: contains the code for the analysis of the results and the creation of the visualization in graphs and tables.
 
 ## How to reproduce the entire thesis
 
@@ -76,13 +76,13 @@ The computational time is pretty long.
 ```
 source("modeling/para_models.R")
 ```
-The results for each Scenario is saved in `Analysis/final_res_scripts_final_results`
+The results for each Scenario are saved in `Analysis/final_res_scripts/final_results/results`
 
 To then evaluate the results run
 ```
 source("Analysis/final_res_scripts/evaluate_all.R")
 ```
-
+The results will be saved in `Analysis/final_res_scripts/final_results/evaluated`.
 
 #### Reproduce graphs and tables (this is possible even when skipping all above)
 
